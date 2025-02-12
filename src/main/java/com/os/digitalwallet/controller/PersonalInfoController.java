@@ -15,14 +15,17 @@ public class PersonalInfoController {
     private PersonalInfoService personalInfoService;
 
     @GetMapping("/get")
-    public ResponseEntity<PersonalInfo> getPersonalInfo(@RequestParam(required = true) String userName){
+    public ResponseEntity<PersonalInfo> getPersonalInfo(
+            @RequestParam(required = true) String userName){
         PersonalInfo response = personalInfoService.getPersonalInfo(userName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<String> updatePersonalInfo( @RequestParam(required = true) String userName,
-                                                      @RequestBody PersonalInfo personalInfo){
+    public ResponseEntity<String> updatePersonalInfo(
+            @RequestParam(required = true) String userName,
+            @RequestBody PersonalInfo personalInfo){
+
         String response = personalInfoService.updatePersonalInfo(personalInfo, userName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

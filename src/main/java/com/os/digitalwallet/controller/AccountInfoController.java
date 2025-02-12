@@ -15,14 +15,16 @@ public class AccountInfoController {
     private AccountInfoService accountInfoService;
 
     @GetMapping("/get")
-    public ResponseEntity<AccountInfo> getAccountData(@RequestParam(required = true) String userName){
+    public ResponseEntity<AccountInfo> getAccountData(
+            @RequestParam(required = true) String userName){
         AccountInfo response = accountInfoService.getAccountInfo(userName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<String> updateAccountInfo(@RequestParam(required = true) String userName,
-                                                    @RequestBody AccountInfo accountData){
+    public ResponseEntity<String> updateAccountInfo(
+            @RequestParam(required = true) String userName,
+            @RequestBody AccountInfo accountData){
         String response = accountInfoService.updateAccountInfo(accountData, userName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

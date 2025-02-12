@@ -7,6 +7,8 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @Entity
 @Data
@@ -25,5 +27,8 @@ public class Transaction {
 
     @Column(name = "amount")
     private int amount;
+
+    @Column(name = "date")
+    private LocalDate transactionDate;
 
 }
