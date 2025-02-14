@@ -1,5 +1,6 @@
 package com.os.digitalwallet.controller;
 
+import com.os.digitalwallet.models.Response;
 import com.os.digitalwallet.models.User;
 import com.os.digitalwallet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody User userData){
-        String response = userService.loginUser(userData);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        Response response = userService.loginUser(userData);
+        return new ResponseEntity<>(response.getMessage(), response.getStatusCode());
     }
 
     @PostMapping("/sign-up")

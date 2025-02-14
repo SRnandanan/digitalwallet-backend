@@ -1,12 +1,13 @@
 package com.os.digitalwallet.service;
 
+import com.os.digitalwallet.models.Response;
 import com.os.digitalwallet.models.User;
 
 public interface UserService {
 
-    public String loginUser(User userData);
+    Response loginUser(User userData);
 
-    public String logoutUser(String userSession);
+    String logoutUser(String userSession);
 
-    public String signUp(User userData);
+    String signUp(User userData);
 }
