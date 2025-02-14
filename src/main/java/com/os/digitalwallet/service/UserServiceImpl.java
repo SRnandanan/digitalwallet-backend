@@ -5,8 +5,6 @@ import com.os.digitalwallet.projections.UserProjection;
 import com.os.digitalwallet.repo.UserRepository;
 import com.os.digitalwallet.utils.EncryptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,21 +14,21 @@ public class UserServiceImpl implements UserService {
     public UserRepository userRepo;
 
     @Override
-    public ResponseEntity<String>loginUser(User userData) {
+    public String loginUser(User userData) {
         User userCheck = userRepo.findByUserName(userData.getUserName()); //for pass retrieve
         if(userCheck == null){
-            return new ResponseEntity<>("User does not exist", HttpStatus.NOT_FOUND);
+            throw new RuntimeException("Provided user does not exist");
         }
 
         try {
             String decryptedPassword = EncryptionUtil.decrypt(userCheck.getPassword());
             if(!decryptedPassword.equals(userData.getPassword())){
-                return new ResponseEntity<>("Incorrect password", HttpStatus.BAD_REQUEST);
+                throw new RuntimeException("Given password is wrong");
             }
         } catch (Exception e) {
-            return new ResponseEntity<>("Error processing your request", HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new RuntimeException(e);
         }
-        return new ResponseEntity<>("Logged in successfully!",HttpStatus.OK);
+        return "Logged in successfully!";
     }
 
     @Override
