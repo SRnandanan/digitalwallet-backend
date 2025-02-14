@@ -33,10 +33,6 @@ public class UserServiceImpl implements UserService {
         return new ResponseEntity<>("Logged in successfully!",HttpStatus.OK);
     }
 
-    @Override
-    public String logoutUser(String userSession) {
-        return "";
-    }
 
     @Override
     public String signUp(User userData){
