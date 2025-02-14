@@ -22,16 +22,19 @@ public class UserServiceImpl implements UserService {
         if(userCheck == null){
             response.setMessage("User not found");
             response.setStatusCode(HttpStatus.NOT_FOUND);
+            return response;
         }
         try {
             String decryptedPassword = EncryptionUtil.decrypt(userCheck.getPassword());
             if(!decryptedPassword.equals(userData.getPassword())){
                 response.setMessage("User not found");
                 response.setStatusCode(HttpStatus.BAD_REQUEST);
+                return response;
             }
         } catch (Exception e) {
             response.setMessage("Internal server error");
             response.setStatusCode(HttpStatus.BAD_REQUEST);
+            return response;
         }
         response.setMessage("User logged in successfully");
         response.setStatusCode(HttpStatus.OK);
