@@ -1,10 +1,11 @@
 package com.os.digitalwallet.service;
 
 import com.os.digitalwallet.models.User;
+import org.springframework.http.ResponseEntity;
 
 public interface UserService {
 
-    public String loginUser(User userData);
+    public ResponseEntity<String> loginUser(User userData);
 
     public String logoutUser(String userSession);
 
