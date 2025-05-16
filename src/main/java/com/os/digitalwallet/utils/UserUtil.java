@@ -1,6 +1,5 @@
 package com.os.digitalwallet.utils;
 
-import com.os.digitalwallet.models.User;
 import com.os.digitalwallet.projections.UserProjection;
 import com.os.digitalwallet.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +21,11 @@ public class UserUtil {
             throw new NullPointerException("User is null");
         }
         return validateUser;
+    }
+
+    public static boolean validateAuthenticatedUser(String token, String userName) {
+        token = token.substring(7).trim();
+        String loggedInUser = JwtUtil.extractUsername(token);
+        return loggedInUser.equals(userName);
     }
 }

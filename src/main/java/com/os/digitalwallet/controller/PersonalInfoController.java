@@ -2,6 +2,7 @@ package com.os.digitalwallet.controller;
 
 import com.os.digitalwallet.models.PersonalInfo;
 import com.os.digitalwallet.service.PersonalInfoService;
+import com.os.digitalwallet.utils.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,13 @@ public class PersonalInfoController {
     private PersonalInfoService personalInfoService;
 
     @GetMapping("/get")
-    public ResponseEntity<PersonalInfo> getPersonalInfo(
+    public ResponseEntity<?> getPersonalInfo(
+            @RequestHeader("Authorization") String token,
             @RequestParam(required = true) String userName){
+        boolean authCheck = UserUtil.validateAuthenticatedUser(token, userName);
+        if(!authCheck){
+            return new ResponseEntity<>("You do not have permissions to access this resource", HttpStatus.FORBIDDEN);
+        }
         PersonalInfo response = personalInfoService.getPersonalInfo(userName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

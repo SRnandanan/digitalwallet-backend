@@ -7,10 +7,15 @@ import com.os.digitalwallet.repo.UserRepository;
 import com.os.digitalwallet.utils.EncryptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     public UserRepository userRepo;
@@ -27,7 +32,7 @@ public class UserServiceImpl implements UserService {
         try {
             String decryptedPassword = EncryptionUtil.decrypt(userCheck.getPassword());
             if(!decryptedPassword.equals(userData.getPassword())){
-                response.setMessage("User not found");
+                response.setMessage("Incorrect password");
                 response.setStatusCode(HttpStatus.BAD_REQUEST);
                 return response;
             }
@@ -73,4 +78,14 @@ public class UserServiceImpl implements UserService {
         return "User created successfully!";
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepo.findByUserName(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getUserName(), user.getPassword(), Collections.emptyList());
+    }
 }

@@ -3,6 +3,7 @@ package com.os.digitalwallet.controller;
 import com.os.digitalwallet.models.Response;
 import com.os.digitalwallet.models.User;
 import com.os.digitalwallet.service.UserService;
+import com.os.digitalwallet.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +22,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private JwtUtil jwtUtil;
+
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody User userData){
+    public ResponseEntity<?> loginUser(@RequestBody User userData){
         Response response = userService.loginUser(userData);
+        if (response.getStatusCode() == HttpStatus.OK) {
+            String token = jwtUtil.generateToken(userData.getUserName());
+
+            return new ResponseEntity<>(token, HttpStatus.OK);
+        }
         return new ResponseEntity<>(response.getMessage(), response.getStatusCode());
     }
 
