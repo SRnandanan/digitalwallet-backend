@@ -15,7 +15,7 @@ public class UserUtil {
         this.userRepo = userRepo;
     }
 
-    public UserProjection validateUser(String userName) {
+    public UserProjection validateUserPresent(String userName) {
         UserProjection validateUser = userRepo.findIdByUserName(userName);
         if (validateUser == null) {
             throw new NullPointerException("User is null");
@@ -27,5 +27,10 @@ public class UserUtil {
         token = token.substring(7).trim();
         String loggedInUser = JwtUtil.extractUsername(token);
         return loggedInUser.equals(userName);
+    }
+
+    public static String getAuthenticatedUser(String token) {
+        token = token.substring(7).trim();
+        return JwtUtil.extractUsername(token);
     }
 }

@@ -22,13 +22,13 @@ public class AccountInfoServiceImpl implements  AccountInfoService{
 
     @Override
     public AccountInfo getAccountInfo(String userName) {
-        UserProjection user = userUtil.validateUser(userName);
+        UserProjection user = userUtil.validateUserPresent(userName);
         return accountRepo.findByUserId(user.getUserId());
     }
 
     @Override
     public String updateAccountInfo(AccountInfo accountInfo, String userName) {
-        UserProjection user = userUtil.validateUser(userName);
+        UserProjection user = userUtil.validateUserPresent(userName);
         accountInfo.setUserId(user.getUserId());
         accountRepo.save(accountInfo);
         return "Account updated successfully";

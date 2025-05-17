@@ -15,23 +15,25 @@ public class PersonalInfoController {
     @Autowired
     private PersonalInfoService personalInfoService;
 
-    @GetMapping("/get")
+    @GetMapping
     public ResponseEntity<?> getPersonalInfo(
             @RequestHeader("Authorization") String token,
             @RequestParam(required = true) String userName){
-        boolean authCheck = UserUtil.validateAuthenticatedUser(token, userName);
-        if(!authCheck){
+        if(!UserUtil.validateAuthenticatedUser(token, userName)){
             return new ResponseEntity<>("You do not have permissions to access this resource", HttpStatus.FORBIDDEN);
         }
         PersonalInfo response = personalInfoService.getPersonalInfo(userName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/update")
+    @PostMapping
     public ResponseEntity<String> updatePersonalInfo(
             @RequestParam(required = true) String userName,
-            @RequestBody PersonalInfo personalInfo){
-
+            @RequestBody PersonalInfo personalInfo,
+            @RequestHeader("Authorization") String token){
+        if(!UserUtil.validateAuthenticatedUser(token, userName)){
+            return new ResponseEntity<>("You do not have permissions to access this resource", HttpStatus.FORBIDDEN);
+        }
         String response = personalInfoService.updatePersonalInfo(personalInfo, userName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

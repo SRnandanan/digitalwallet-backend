@@ -70,7 +70,7 @@ public class TransactionServiceImpl implements TransactionService{
         }
         this.senderBalance = senderAccount.getBalance();
         this.receiverBalance = receiverAccount.getBalance();
-        return senderAccount.getBalance() > transaction.getAmount();
+        return senderAccount.getBalance() >= transaction.getAmount();
     }
 
     private String generateTransactionId() {

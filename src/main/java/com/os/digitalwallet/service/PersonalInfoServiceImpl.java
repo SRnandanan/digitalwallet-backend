@@ -24,13 +24,13 @@ public class PersonalInfoServiceImpl implements PersonalInfoService{
 
     @Override
     public PersonalInfo getPersonalInfo(String userName) {
-        UserProjection validateUser = userUtil.validateUser(userName);
+        UserProjection validateUser = userUtil.validateUserPresent(userName);
         return personalInfoRepo.findByUserId(validateUser.getUserId());
     }
 
     @Override
     public String updatePersonalInfo(PersonalInfo userData, String userName) {
-        UserProjection validateUser = userUtil.validateUser(userName);
+        UserProjection validateUser = userUtil.validateUserPresent(userName);
         userData.setUserId(validateUser.getUserId());
         PersonalInfo savedPersonalInfo = personalInfoRepo.save(userData);
         return "Personal Info updated successfully!";

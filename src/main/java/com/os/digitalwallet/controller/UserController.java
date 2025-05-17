@@ -1,6 +1,7 @@
 package com.os.digitalwallet.controller;
 
 import com.os.digitalwallet.models.Response;
+import com.os.digitalwallet.models.Token;
 import com.os.digitalwallet.models.User;
 import com.os.digitalwallet.service.UserService;
 import com.os.digitalwallet.utils.JwtUtil;
@@ -30,8 +31,9 @@ public class UserController {
         Response response = userService.loginUser(userData);
         if (response.getStatusCode() == HttpStatus.OK) {
             String token = jwtUtil.generateToken(userData.getUserName());
-
-            return new ResponseEntity<>(token, HttpStatus.OK);
+            Token tokenBody = new Token();
+            tokenBody.setAccess_token(token);
+            return new ResponseEntity<>(tokenBody, HttpStatus.OK);
         }
         return new ResponseEntity<>(response.getMessage(), response.getStatusCode());
     }
