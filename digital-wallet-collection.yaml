@@ -1,0 +1,554 @@
+type: collection.insomnia.rest/5.0
+name: DigitalWallet
+meta:
+  id: wrk_f01fe874d74a421eaa4551d5dba551b2
+  created: 1739365561933
+  modified: 1739365561933
+collection:
+  - url: localhost:8080/digitalwallet/api/user/sign-up
+    name: Sign Up - User One
+    meta:
+      id: req_512e2aca20d24b20ae7ead42d9be521d
+      created: 1739365571256
+      modified: 1739366911380
+      isPrivate: false
+      sortKey: -1739365571257
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "userName" : "srnandanan",
+            "password": "abcdexYXZ"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/user/sign-up
+    name: Sign Up - User Two
+    meta:
+      id: req_f56a99f86cf8455c94e3e078ead83495
+      created: 1739365667815
+      modified: 1747484261193
+      isPrivate: false
+      sortKey: -1739365575364.3125
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "userName" : "testAccount",
+            "password": "lmntrx"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/digitalwallet/api/personal-info?userName=srnandanan
+    name: GET Personal Info - User One
+    meta:
+      id: req_0f5fcf8ff45842d89e5a7a0d51de60ed
+      created: 1739365702691
+      modified: 1747486667459
+      isPrivate: false
+      sortKey: -1739365702691
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_5ffef274eb73409f9a63e4bc2d7fda3f
+      - id: pair_5d101296696f4d7dbef1981489bc5f2e
+        name: Authorization
+        value: Bearer {% response 'body', 'req_5cb343457e664137b28a4df05a309437',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/personal-info?userName=testAccount
+    name: GET Personal Info - User Two
+    meta:
+      id: req_428693dd4d304fb18134fa3dec8fce6e
+      created: 1739365763037
+      modified: 1747486679619
+      isPrivate: false
+      sortKey: -1739366193629.25
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_0a12af5dc7f1435491193394e263abb8
+      - id: pair_d57adf89aa9d49afa326ca1447df103e
+        name: Authorization
+        value: Bearer {% response 'body', 'req_a9a02e6f67da4ef28bf61fb61aa8786c',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/user/login
+    name: POST Login User One
+    meta:
+      id: req_5cb343457e664137b28a4df05a309437
+      created: 1739366620031
+      modified: 1747484974549
+      isPrivate: false
+      sortKey: -1739365579471.625
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "userName" : "srnandanan",
+            "password": "abcdexYXZ"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_798fa009fda54e0f96b0f7f8599486b6
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_819483979f9a4ee3bca9932262c45d44
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/user/login
+    name: POST Login User Two
+    meta:
+      id: req_a9a02e6f67da4ef28bf61fb61aa8786c
+      created: 1739366690233
+      modified: 1747483580008
+      isPrivate: false
+      sortKey: -1739365583578.9375
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "userName" : "testAccount",
+            "password": "lmntrx"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/10.3.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/account-info?userName=srnandanan
+    name: POST Create Account Info - User One
+    meta:
+      id: req_fd437bf165e44672b277a23cc08ca5d8
+      created: 1739366749104
+      modified: 1747486690206
+      isPrivate: false
+      sortKey: -1739366749104
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "upi": "sanjay@okaxis",
+            "bank": "axis bank",
+            "balance": 500
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_14c31ea17cb74ae498857c83cc60fbdf
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_8c6fe54cd5174d32b1655cec431a71fe
+      - id: pair_a7af0790a40e47f1b2872e7ebd2c22dd
+        name: Authorization
+        value: Bearer {% response 'body', 'req_5cb343457e664137b28a4df05a309437',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/account-info?userName=testAccount
+    name: POST Create Account Info - User Two
+    meta:
+      id: req_c3caa3896edf43bd895dbf54807c0f17
+      created: 1739366982019
+      modified: 1747486698983
+      isPrivate: false
+      sortKey: -1739366965955
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "upi": "abcdefg@okaxis",
+            "bank": "axis bank",
+            "balance": 5000
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_74ceb996fb774adcaf75e5c3f1a89e34
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_42f1bfe7fb174d4da8087ac3d918fcfb
+      - id: pair_92a0dc776a3d4b508fb3b0d1b3f20f82
+        name: Authorization
+        value: Bearer {% response 'body', 'req_a9a02e6f67da4ef28bf61fb61aa8786c',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/personal-info?userName=srnandanan
+    name: POST Create Personal Info - User One
+    meta:
+      id: req_b866f52cd50d4b83a05757c842c09143
+      created: 1739367032151
+      modified: 1747486525736
+      isPrivate: false
+      sortKey: -1739365604115.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "firstName": "Sanjay",
+            "lastName": "Raghunandanan",
+            "address": "Monarch Nest",
+            "dateOfBirth": "22-03-1999"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_79e4f8098db94d25ae6c4f520e799cda
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_cf288ae8ffde408ab5d1a8d0ee9d4cf8
+      - id: pair_0e7817153d2e427e8a22d66561100596
+        name: Authorization
+        value: Bearer {% response 'body', 'req_5cb343457e664137b28a4df05a309437',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}
+        disabled: false
+    authentication:
+      type: none
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/personal-info?userName=testAccount
+    name: POST Create Personal Info - User Two
+    meta:
+      id: req_f1b89b882dd34d2a8b1917e67ed170c1
+      created: 1739367183143
+      modified: 1747486645814
+      isPrivate: false
+      sortKey: -1739365620544.75
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "firstName": "Test",
+            "lastName": "Account",
+            "address": "SV Bird Nest",
+            "dateOfBirth": "04-11-2003"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_dc44777aeb2646269ac95dcf660cf799
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_8987e708764d49fda5a0a4f9ff0ae668
+      - id: pair_1abc86c0154a4d378d47571c0c72c62a
+        name: Authorization
+        value: Bearer {% response 'body', 'req_a9a02e6f67da4ef28bf61fb61aa8786c',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/account-info?userName=srnandanan
+    name: GET Account Info - User One
+    meta:
+      id: req_aa755b6084dd4f0c9657f61e089b7db4
+      created: 1739367333461
+      modified: 1747486711688
+      isPrivate: false
+      sortKey: -1739367333461
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_3f8d60aefaf941f8a31c7eac2e586bea
+      - id: pair_fe53ff50e24a42f1bb6c2cdf16938cb6
+        name: Authorization
+        value: Bearer {% response 'body', 'req_5cb343457e664137b28a4df05a309437',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/account-info?userName=testAccount
+    name: GET Account Info - User Two
+    meta:
+      id: req_071c9b66408c49c79a5151a359e5c5b8
+      created: 1739367447874
+      modified: 1747486725126
+      isPrivate: false
+      sortKey: -1739367393562.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_cf1da415261849289877f296fb8e383f
+      - id: pair_6f9949888a05436badfc288360c134a2
+        name: Authorization
+        value: Bearer {% response 'body', 'req_a9a02e6f67da4ef28bf61fb61aa8786c',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/transaction/create
+    name: Transfer to User One
+    meta:
+      id: req_cebf20a355494a9d857c691d406663b7
+      created: 1739367573867
+      modified: 1747488067384
+      isPrivate: false
+      sortKey: -1739367573867
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"senderId": "abcdefg@okaxis",
+        	"receiverId": "sanjay@okaxis",
+        	"amount": 1000
+        }
+    parameters:
+      - id: pair_c2d61e881dbf40b492cbeb4d6047f1da
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_38125e8ca6aa4a6fbe5479afe27955a9
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_4500328e58ae4df2afd5bc81bfeb595c
+      - id: pair_8e620e333b30498bbd3942d04ae5f9f9
+        name: Authorization
+        value: Bearer {% response 'body', 'req_a9a02e6f67da4ef28bf61fb61aa8786c',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8080/digitalwallet/api/transaction/create
+    name: Transfer to User Two
+    meta:
+      id: req_660bfb564bc7428f8b126fd35a889f9a
+      created: 1739367901510
+      modified: 1747488112241
+      isPrivate: false
+      sortKey: -1739367667599.75
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"senderId": "sanjay@okaxis",
+        	"receiverId": "abcdefg@okaxis",
+        	"amount": 500
+        }
+    parameters:
+      - id: pair_c2d61e881dbf40b492cbeb4d6047f1da
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_e774fed9db94402cba35c64712482390
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_ab8cdee56ab4488dae01ac387486d1c0
+      - id: pair_ff327f593bd045e48c95febdb44d4440
+        name: Authorization
+        value: Bearer {% response 'body', 'req_5cb343457e664137b28a4df05a309437',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/digitalwallet/api/transaction?credit=true
+    name: GET Credits to User One
+    meta:
+      id: req_a00195c1ff83441bafcb1842d064b66f
+      created: 1739367948798
+      modified: 1747486926477
+      isPrivate: false
+      sortKey: -1739367948798
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"upi":"sanjay@okaxis"
+        }
+    parameters:
+      - id: pair_d8adab0e82554fdf88eb00474539bb3c
+        name: credit
+        value: "true"
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_e45e00643f884a79a3a35f416e3cc6c7
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_1472dd9cb31e4e1c8ecfd5260faadb62
+      - id: pair_dc429b957c774dc98ac5c2f5e7bb25ae
+        name: Authorization
+        value: Bearer {% response 'body', 'req_5cb343457e664137b28a4df05a309437',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/digitalwallet/api/transaction?credit=true
+    name: GET Credits to User two
+    meta:
+      id: req_31d09648d4e04dc19c93d7114371ddc5
+      created: 1747482869670
+      modified: 1747486938328
+      isPrivate: false
+      sortKey: -1739367948898
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"upi":"abcdefg@okaxis"
+        }
+    parameters:
+      - id: pair_d8adab0e82554fdf88eb00474539bb3c
+        name: credit
+        value: "true"
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_6d3f4e9749964430b86724b901cb8648
+      - name: User-Agent
+        value: insomnia/10.3.1
+        id: pair_8cf7ef89443e4094be3a3b99a99de7c1
+      - id: pair_4de9534b67bb449bbdc493e33b195e37
+        name: Authorization
+        value: Bearer {% response 'body', 'req_a9a02e6f67da4ef28bf61fb61aa8786c',
+          'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_c56cbbe6eaa6b5c77926a16b6539981ded447503
+    created: 1739365561970
+    modified: 1739365561970
+environments:
+  name: Base Environment
+  meta:
+    id: env_c56cbbe6eaa6b5c77926a16b6539981ded447503
+    created: 1739365561964
+    modified: 1739365561964
+    isPrivate: false
