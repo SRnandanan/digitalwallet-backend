@@ -24,6 +24,8 @@ mvn install
 mvn spring-boot:run
 ```
 
+After running the application in localhost, the collection **digital-wallet-collection.yaml** may be imported to your REST client (like Postman or Insomnia) to test the APIs
+
 ## 🛠️ Technologies Used
 
 
