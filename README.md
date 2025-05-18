@@ -1,4 +1,4 @@
-# 🚀 Digital Wallet Backend
+# 🏦 Digital Wallet
 
 ## 🏆 Overview
 A **secure and scalable** digital wallet backend built using **Spring Boot**, featuring **robust authentication** and **encryption mechanisms**. Users can register and transfer money to each other seamlessly.
